@@ -18,16 +18,20 @@ export default function ContactForm() {
         if (form._hp) return; // honeypot
         setLoading(true);
         setStatus(null);
-        console.log(form);
+
         try {
-            const res = await fetch('/api/contact', {
+            const API_URL =
+                process.env.NEXT_PUBLIC_CONTACT_API ||
+                'https://sharunk.com/api/contact';
+
+            const res = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data?.error || 'Failed');
-            setStatus({ ok: true, msg: 'Message sent - I’ll reply soon!' });
+            setStatus({ ok: true, msg: 'Message sent - I’ll get back soon!' });
             setForm({ name: '', email: '', message: '', _hp: '' });
         } catch (err) {
             setStatus({ ok: false, msg: err.message });

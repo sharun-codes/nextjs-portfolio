@@ -1,4 +1,5 @@
 import './globals.css';
+import { Suspense } from 'react';
 import GoogleAnalytics from './components/GoogleAnalytics';
 
 export const metadata = {
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body suppressHydrationWarning>
-                <GoogleAnalytics />
+                <Suspense fallback={null}>
+                    <GoogleAnalytics />
+                </Suspense>
                 <main>{children}</main>
             </body>
         </html>
