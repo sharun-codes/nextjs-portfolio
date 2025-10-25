@@ -1,7 +1,9 @@
 'use client';
 import { useState } from 'react';
+import { useCsrf } from './../useCsrf';
 
 export default function ContactForm() {
+    const csrf = useCsrf();
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -20,13 +22,15 @@ export default function ContactForm() {
         setStatus(null);
 
         try {
-            const API_URL =
-                process.env.NEXT_PUBLIC_CONTACT_API ||
-                'https://sharunk.com/api/contact';
+            const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API;
 
-            const res = await fetch(API_URL, {
+            const res = await fetch(CONTACT_API_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include', // ensure cookie is sent
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrf || '',
+                },
                 body: JSON.stringify(form),
             });
             const data = await res.json();
