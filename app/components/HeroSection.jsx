@@ -120,7 +120,7 @@ export default function HeroSection() {
                         aria-hidden
                     >
                         <Image
-                            src="/images/sharun_a.jpeg"
+                            src="/images/sharun.jpeg"
                             alt="Sharun smiling"
                             width={900}
                             height={700}

@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+const avatarImage = '/images/avatar.png';
 
 const Header = () => {
     return (
@@ -8,7 +9,7 @@ const Header = () => {
                 <a href="#" className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center overflow-hidden">
                         <Image
-                            src="/images/avataaars.png"
+                            src="/images/avatar.png"
                             alt="Profile picture"
                             width={40}
                             height={40}
