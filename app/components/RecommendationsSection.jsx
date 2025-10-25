@@ -213,7 +213,7 @@ const RecommendationsSection = ({ autoPlay = true, interval = 6000 }) => {
     };
 
     // truncation helper
-    const TRUNCATE_LEN = 250;
+    const TRUNCATE_LEN = 210;
     const isLong = (s) => s && s.length > TRUNCATE_LEN;
     const truncated = (s) =>
         s.slice(0, TRUNCATE_LEN).trimEnd() +
@@ -231,7 +231,7 @@ const RecommendationsSection = ({ autoPlay = true, interval = 6000 }) => {
                     aria-label="Recommendations carousel"
                 >
                     {/* Slides */}
-                    <div className="relative h-auto min-h-[500px] p-8">
+                    <div className="relative h-auto min-h-[550px] p-8">
                         {recommendations.map((r, i) => {
                             const active = i === index;
                             return (
@@ -262,7 +262,7 @@ const RecommendationsSection = ({ autoPlay = true, interval = 6000 }) => {
                                             </h3>
                                         </div>
 
-                                        <div className="mt-4 text-slate-600 leading-relaxed text-left">
+                                        <div className="mt-6 text-slate-600 leading-relaxed text-left">
                                             {isLong(r.text) ? (
                                                 <>
                                                     <p className="whitespace-pre-line">
@@ -411,7 +411,7 @@ const RecommendationsSection = ({ autoPlay = true, interval = 6000 }) => {
 
                             <hr className="my-4" />
 
-                            <div className="prose max-w-none text-slate-700">
+                            <div className="prose max-w-none text-slate-700 max-h-96 overflow-y-auto">
                                 {modalContent.text
                                     .split('\n')
                                     .map((line, idx) => (
